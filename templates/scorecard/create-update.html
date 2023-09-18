@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{%block content%}
+<style>
+.hidden{display:none;}    
+
+</style>
+
+<div class = 'home-container' style='margin-top:30px;'>
+   {% include 'scorecard/partials/forms.html' %}
+   {%if new_scorecard_url %}
+   <label class="form-label">ScoreCards</label>
+   {%endif%}
+
+    {%for scorecard in object.get_scorecard_children%}
+    {% include 'scorecard/partials/scorecard-inline.html' with object=scorecard %}
+    
+        {%endfor%}
+    
+        {%if new_scorecard_url %}
+        <div class ="button-align mx-auto text-center ">
+    <div id = 'scorecard-create'>
+    </div>
+    <button  class = "btn  " 
+    style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;' 
+    hx-get='{{new_scorecard_url}}'
+    hx-trigger='click' 
+    hx-target='#scorecard-create' 
+    hx-swap='beforeend'>Add Habits</button>
+</div>
+    {%endif%}
+</div>
+<!--
+    Dynamically adding a new form each time
+    'Add more' button is clicked
+-->
+<script>
+
+    document.addEventListener('click', (event) => {
+            if(event.target.id == 'add-more') {
+                add_new_form(event)
+            }
+    })
+    
+    function add_new_form(event) {
+        if (event) {
+            event.preventDefault()
+        }
+        const totalNewForms = document.getElementById('id_form-TOTAL_FORMS')
+    
+        const currentScorecardTitleForms =document.getElementsByClassName
+        ('scorecardtitle-form')
+        const currentFormCount = currentScorecardTitleForms.length
+        // now add new empty for to our html form
+        const formCopyTarget = document.getElementById('scorecardtitle-form-list')
+        //make a copy of the original empty form
+        const copyEmptyFormEl = document.getElementById('empty-form').cloneNode(true)
+        copyEmptyFormEl.setAttribute('class','scorecardtitle-form')
+        copyEmptyFormEl.setAttribute('id',`form-${currentFormCount}`)
+        const regex = new RegExp('__prefix__','g')
+        copyEmptyFormEl.innerHTML = copyEmptyFormEl.innerHTML.replace(
+            regex,
+            currentFormCount
+            )
+        totalNewForms.setAttribute('value',currentFormCount+1)
+        formCopyTarget.append(copyEmptyFormEl)
+    }
+
+
+</script>
+{%endblock content%}

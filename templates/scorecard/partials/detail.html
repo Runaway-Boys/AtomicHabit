@@ -1,0 +1,51 @@
+
+<div = "pos">
+ 
+    <div class = "title">
+   
+        <p>{{object.name}}{% if object.get_edit_url %}{%endif%}<p>
+    </div>
+</div>
+<div class = "sub-title">
+    {% if object.description%}
+    <p>{{object.description}}</p>
+
+
+{%else%}
+<p style ="text-align:center;"><i>empty - click edit to add your desciption</i></p>
+{%endif%}
+</div>
+
+<div class = "title">
+    <p>Daily Habits</p>
+</div>
+    <ul class="list-group" >
+        {%if object.get_scorecard_children%}
+{% for scorecards in object.get_scorecard_children %}
+    <div class = 'scorecard-wrapper'>
+<li class="list-group-item " style = "margin:5px; text-align:center;  "> {{scorecards.name}} - {{scorecards.options}}</li>
+
+
+
+
+{%endfor%}
+</div>
+
+{%else%}
+<p style ="text-align:center;"><i>empty - click edit to add your daily habits</i></p>
+{%endif%}
+</ul> 
+<div class ="button-align mx-auto text-center ">
+   
+    <a class="btn" 
+    style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;'
+    href ='{{ object.get_edit_url }}'>Edit</a>
+    
+    
+    <a class="btn"
+     style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;'
+     href ='{{ object.get_delete_url }}' 
+     hx-post = '{{object.get_delete_url}}' 
+     hx-confirm ='Are you sure you want to delete {{ object.name }} ? ' 
+     hx-trigger = 'click' >Delete</a>
+</div>

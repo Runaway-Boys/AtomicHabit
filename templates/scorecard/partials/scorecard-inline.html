@@ -1,0 +1,17 @@
+<div class =" scorecard-children"  id="scorecard-{{object.id}}">
+    <label class="form-label form-label-sm" type="text">{{object.name}}</label>  {{object.options}}
+    <button class = "btn "
+     style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;' 
+     hx-trigger = 'click' 
+     hx-get='{{object.get_hx_edit_url}}'
+     hx-target="#scorecard-{{object.id}}">Edit</button>
+    
+    <a class = "btn " 
+    hx-post='{{object.get_delete_url}}' 
+    style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;'
+    hx-confirm = 'Delete habit ?'
+    hx-trigger='click' 
+    href ='{{object.get_delete_url}}'
+    hx-target="#scorecard-{{object.id}}"
+    hx-swap = 'outerHTML'>Remove</a>
+</div>

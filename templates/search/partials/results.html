@@ -1,0 +1,18 @@
+
+<div class = "title">
+   <p>ScoreCards Results<p>
+</div>
+Searched for <b>" {{request.GET.q}} "</b><ul class="list-group" >
+{% for object in queryset%}
+
+   <li class="list-group-item " style = "margin:5px; text-align:center; "> <a class = "list-links"style = "text-decoration:none; color:#73498D; "href = "{{object.get_absolute_url}}">{{object.name}}</a></li>
+
+{%empty%}
+</ul>
+<div class = "none-found">
+<p>no results found</p>
+</div>
+
+
+   {%endfor%}
+

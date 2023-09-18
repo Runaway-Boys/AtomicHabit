@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = "title">
+    <p>ScoreCards<p>
+</div>
+
+
+    <ul class="list-group" >
+        {% for x in object_list %}
+
+        <li class="list-group-item " style = "margin:5px; text-align:center; " > 
+            <a class = "list-links"
+            style ="text-decoration: none; color:#9c8e56; font-size:1.5rem; background-color:transparent;border:none;"
+            href = '{{ x.get_absolute_url }}'>
+                {{x.name}}
+            </a>
+        </li>
+
+        {%endfor%}
+    </ul>
+
+
+
+<div class ="button-align mx-auto text-center ">
+<a class="btn" href='{% url "home" %}'style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;' role="button">Go Home</a>
+</div>
+{% endblock content %}

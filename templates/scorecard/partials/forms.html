@@ -1,0 +1,38 @@
+<div id='scorecard-container'>
+
+    <form  action='.' method = "POST" hx-post="." hx-swap="outerHTML" hx-trigger='{% if form.instance.id %}change delay:500ms,{%endif%}submit'>
+    <div class = "title">
+        <p>Atomic Habit<p>
+    </div>
+        {% csrf_token %}
+        
+        {%for field in form%}
+        <div class= 'required_css_class'>
+                <div class="mb-3">
+                	<div class = "input-group-prepend">
+                        <div class = "input">
+                        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                </div>
+            </div>           
+         </div>
+        {%endfor%}
+
+
+       <div class = "button">
+        <div class ='htmx-indicator'>Loading...</div>
+        <div class ="button-align mx-auto text-center ">
+            
+            <button class = "btn  " 
+            style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;' 
+            type ='submit'> Save</button>
+
+            <a class="btn" 
+            href='{% url "home" %}'style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;' 
+            role="button">Cancel</a>
+        </div>
+       </div>
+
+    </form>
+</div>

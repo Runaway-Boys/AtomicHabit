@@ -10,7 +10,7 @@
         <label class="form-label">Register</label>
         <form method='POST'>
             {% csrf_token %}
-            <label>{{form.username.label}}</label>
+            <label style = "font-size:2rem;">{{form.username.label}}</label>
             {{form.username}}
         <label>{{form.password1.label}}</label>
         {{form.password1}}

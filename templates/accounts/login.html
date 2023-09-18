@@ -8,9 +8,21 @@
 {% if not request.user.is_authenticated %}
     <div style='margin-top:30px;'>
         <form method='POST'>
+            <div class= 'required_css_class'>
+                <div class="mb-3">
+                	<div class = "input-group-prepend">
+                        <div class = "input">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type='submit'>Login</button>
+            <label class = "form-label" style = "font-size:2rem; color: #9c8e56;">{{form.username.label}}</label>
+            {{form.username}}
+            <label class = "form-label" style = "font-size:2rem; color: #9c8e56;">{{form.password.label}}</label>
+           {{form.password}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button  class = "btn  " 
+            style = 'margin:10px; color:  #9c8e56; background-color: transparent;  border: 2px solid #9c8e56;'  type='submit'>Login</button>
         </form>
 
         <p>Need an account? Please <a href='/register'>Register</a></p>

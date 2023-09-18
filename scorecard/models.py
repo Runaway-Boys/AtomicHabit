@@ -1,29 +1,10 @@
 from django.db import models
-from django.db.models import Q
+
 from django.conf import settings
 from multiselectfield import MultiSelectField
 from django.urls import reverse
 
 # Create your models here.
-
-class ScoreCardQuerySet(models.QuerySet):
-    # searching for a specific scorecard name in a list of scorecards
-    # and displaying all the lookups that are similar to the searched word
-    def search(self, query=None):
-        if query is None or query == "":
-            return self.none()
-        lookups = (
-            Q(name__icontains=query) | 
-            Q(description__icontains=query) 
-        )
-        return self.filter(lookups) 
-
-class ScoreCardManager(models.Manager):
-    def get_queryset(self):
-        return ScoreCardQuerySet(self.model, using=self._db)
-
-    def search(self, query=None):
-        return self.get_queryset().search(query=query)
 
 
 class ScoreCard(models.Model):
@@ -34,7 +15,6 @@ class ScoreCard(models.Model):
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
 
-    objects = ScoreCardManager()
 
     def get_absolute_url(self):
         return reverse("scorecard:detail", kwargs={'id':self.id})

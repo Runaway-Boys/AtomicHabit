@@ -3,21 +3,8 @@ body{
     background-color:#DCD4C8 !important;
     color:#383733 ;
     padding: 50px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif !important;
 
-}
-.pos
-{
-    position: absolute;
-    width:70%;
-}
-.pos__back-button{
-float:right;
-width: 10%;
-}
-.results-none
-{
-    text-decoration: none;
 }
 nav{
     box-shadow:3px 6px 13px -4px rgba(0,0,0,0.21);
@@ -76,7 +63,6 @@ nav{
     align-items: center;
     justify-content: center;
     border:0;
-    border-bottom: #9c8e56;
     border-bottom: 3px solid #9c8e56;
     color: #9c8e56;
     font-size: 2rem;
@@ -126,12 +112,13 @@ input
 {
     width: 350px;
     padding:8px 0;
-    background-color: transparent;
+    background-color: #8b7e4c;
     border:none;
     font-size: 14px;
     font-weight: 300;
     color: #9c8e56;
 }
+
 .form-control
 {
     outline:none;

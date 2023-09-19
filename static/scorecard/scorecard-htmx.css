@@ -107,7 +107,7 @@ textarea
 .input textarea:hover
 {
     outline:none;
-    border-color: #9c8e56;
+    border-color: #73498D;
     box-shadow: 0 1px 0 0 #9c8e56;
     background-color: #F1ECE4 ;
     color: #73498D;
@@ -118,7 +118,7 @@ input
     width: 350px;
     padding:8px 0;
     background-color: transparent;
-    border:none;
+    border:#9c8e56;
     font-size: 14px;
     font-weight: 300;
     color: #9c8e56;

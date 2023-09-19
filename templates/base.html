@@ -39,6 +39,14 @@
                   <a class = "nav-link"type = "button" style ="item-align:left;" onClick="javascript:history.go(-1);">Go Back</a>
                   {%endif%}
                 </div>
+                
+                {% if  request.user.is_authenticated %}
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="nav-item">
+                          <a class="nav-link" style = "color:white;">{{request.user|title}}</a>
+                      </li>
+                  </ul>
+                    {%endif%}
               </div>
             </div>
           </nav>
